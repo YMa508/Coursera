@@ -28,17 +28,14 @@ def mergeSort(my_list):
             else:
                 sorted_list.append(sorted_R[j])
                 j += 1
-            #k += 1
         
         while i < len(sorted_L):
             sorted_list.append(sorted_L[i])
             i += 1
-            #k += 1
                 
         while j < len(sorted_R):
             sorted_list.append(sorted_R[j])
             j += 1
-            #k += 1
         return sorted_list
     else:
         return my_list
