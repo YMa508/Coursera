@@ -37,12 +37,21 @@ for line in data:
 
 ########################################################
 # DFS on reverse graph
-
+t = 0
+s = None
 for node in range(num_nodes):
-
-    while stack:
-
-        for head in r_gr[stack_node]:
+    if not visited[node]:
+        s = node
+        #stack.append(node)
+        stack = [node]
+        while stack:
+            stack_node = stack.pop()
+            visited[stack_node] = True
+            for head in r_gr[stack_node]:
+                if not visited[head]:
+                    stack.append(head)
+                else: #visited[head] == True
+                    order.append(stack_node)
 
 
 ########################################################
