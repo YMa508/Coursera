@@ -12,7 +12,7 @@ class Heap(object):
         self.heap = []
     
     def parent(self, idx):
-        return math.floor(idx/2)
+        return int(math.floor(idx/2))
     
     def insert(self, key):
         self.heap.append(key)
@@ -20,7 +20,8 @@ class Heap(object):
         if len(self.heap) > 1:
             idx = len(self.heap)
             parent_idx = self.parent(idx)
-            while self.heap[parent_idx - 1] > self.heap[idx - 1]:
+            # need check whether the idx is already the root, if so stop the bubble up
+            while (self.heap[parent_idx - 1] > self.heap[idx - 1]) and (idx > 1):
                 self.heap[parent_idx - 1], self.heap[idx - 1] = self.heap[idx - 1], self.heap[parent_idx - 1]
                 idx = parent_idx
                 parent_idx = self.parent(idx)
@@ -51,16 +52,21 @@ class Heap(object):
         print(self.heap)
     
 if __name__ == "__main__":
-    # heap elements
-    heap_list = [4, 4, 8, 9, 4, 12, 9, 11, 13]
-    # initialize heap as array
     h = Heap()
-    for item in heap_list:
-        h.insert(item)
-    h.display()
-    a = h.extractMin()
-    h.display()
-    a = h.extractMin()
-    h.display()
-    a = h.extractMin()
-    h.display()
+    h.insert(666)
+    h.insert(10)
+    
+    
+#    # heap elements
+#    heap_list = [4, 4, 8, 9, 4, 12, 9, 11, 13]
+#    # initialize heap as array
+#    h = Heap()
+#    for item in heap_list:
+#        h.insert(item)
+#    h.display()
+#    a = h.extractMin()
+#    h.display()
+#    a = h.extractMin()
+#    h.display()
+#    a = h.extractMin()
+#    h.display()
